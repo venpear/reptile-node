@@ -19,16 +19,18 @@ app.get('/', function (req, res, next) {
       if (err) {
         return next(err);
       }
+      // console.log(sres.text);
       // sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后
       // 就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 `$`
       // 剩下就都是 jquery 的内容了
       var $ = cheerio.load(sres.text);
       var items = [];
-      $('#topic_list .topic_title').each(function (idx, element) {
+      $('#topic_list .cell').each(function (idx, element) {
         var $element = $(element);
         items.push({
-          title: $element.attr('title'),
-          href: $element.attr('href')
+          img: $element.find($('.pull-right')).attr('href'),
+          title: $element.find($('.topic_title')).attr('title'),
+          href: $element.find($('.topic_title')).attr('href')
         });
       });
 
