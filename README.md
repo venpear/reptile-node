@@ -10,9 +10,11 @@ node npm
 
 * 初始化项目
 ```
-$ mkdir myweb && cd myapp
+$ mkdir myweb && cd myweb
 $ npm init 
 $ npm install --save express superagent cheerio
+
+如果 npm 安装不上可以用 cnpm 或者 yarn
 ```
 * 启动
 ```
